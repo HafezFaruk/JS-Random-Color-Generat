@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript random color generator</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      body {
+        background-color: #f0efefde;
+      }
+      header {
+        background: #0f09ce;
+        padding: 80px 20px;
+      }
+      header h1 {
+        color: #f1f0ed;
+        font-size: 34px;
+        line-height: 44px;
+        font-weight: 600;
+        max-width: 900px;
+        letter-spacing: 1px;
+        margin: 0 auto;
+        text-align: center;
+
+      }
+      main {
+        padding: 20px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+      .header-box {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 80px;
+        padding-top: 40px;
+      }
+      .header-box h2 {
+        font-size: 38px;
+        line-height: 48px;
+        letter-spacing: 2px;
+        font-weight: 700;
+        text-transform: capitalize;
+      }
+      .header-box button {
+        font-size: 20px;
+        line-height: 30px;
+        letter-spacing: 2px;
+        font-weight: 700;
+        background-color: #0505cf;
+        color: #ffffff;
+        border: none;
+        padding: 20px 30px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all .5s;
+      }
+      .header-box button:hover{
+        transform: scale(1.1);
+        transition: all .5s;
+      }
+      .color-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .card {
+        margin: 10px;
+        height: 200px;
+        width: 200px;
+        background-color: red;
+        border-radius: 16px;
+        box-shadow: 0px 0px 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: 20px;
+        line-height: 30px;
+        transition: all .5s;
+      }
+      .card:hover{
+        transform: scale(1.1);
+        transition: all .5s;
+      }
+      footer {
+        background: gray;
+        padding: 20px;
+        color: #ffffff;
+        text-align: center;
+        margin-top: 60px;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>
+        This project will generate random colors for you and you can copy the
+        color code by clicking between the cards
+      </h1>
+    </header>
+    <main>
+      <div class="header-box">
+        <h2>javascript random color generator</h2>
+        <button id="createColorBtn">Create a new color</button>
+      </div>
+      <div class="color-card">
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+        <div class="card">Color code</div>
+      </div>
+    </main>
+    <footer>
+      <p>© 2023 Md Omar Faruk All Rights Reserved.</p>
+    </footer>
+    <script>
+      let clickNewColor = document.querySelector("#createColorBtn");
+      let card = document.querySelectorAll(".card");
+      colors = [];
+      let i;
+      for (i = 0; i < card.length; i++) {
+        colors.push(
+          `#${Math.floor(Math.random() * 255).toString(16)}${Math.floor(
+            Math.random() * 255
+          ).toString(16)}${Math.floor(Math.random() * 255).toString(16)}`
+        );
+        card[i].style.background = colors[i];
+        card[i].innerHTML = colors[i];
+
+        card[i].onclick = function () {
+          navigator.clipboard.writeText(this.innerHTML);
+          let currentColor = this.innerHTML;
+          this.innerHTML = "Copied";
+          let currentTag = this;
+          setTimeout(function () {
+            currentTag.innerHTML = currentColor;
+          }, 1000);
+        };
+        clickNewColor.onclick = function () {
+          window.location = location.href;
+        };
+      }
+    </script>
+  </body>
+</html>
